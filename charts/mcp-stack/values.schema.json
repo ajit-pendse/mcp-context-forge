@@ -151,6 +151,14 @@
           },
           "additionalProperties": false
         },
+        "affinity": {
+          "$ref": "#/$defs/affinity",
+          "description": "Kubernetes affinity configuration"
+        },
+        "tolerations": {
+          "$ref": "#/$defs/tolerations",
+          "description": "Kubernetes tolerations configuration"
+        },
         "resources": {
           "$ref": "#/$defs/resources",
           "description": "Resource limits and requests"
@@ -760,6 +768,14 @@
           },
           "additionalProperties": false
         },
+        "affinity": {
+          "$ref": "#/$defs/affinity",
+          "description": "Kubernetes affinity configuration"
+        },
+        "tolerations": {
+          "$ref": "#/$defs/tolerations",
+          "description": "Kubernetes tolerations configuration"
+        },
         "resources": {
           "$ref": "#/$defs/resources",
           "description": "Resource limits and requests"
@@ -901,6 +917,14 @@
           },
           "additionalProperties": false
         },
+        "affinity": {
+          "$ref": "#/$defs/affinity",
+          "description": "Kubernetes affinity configuration"
+        },
+        "tolerations": {
+          "$ref": "#/$defs/tolerations",
+          "description": "Kubernetes tolerations configuration"
+        },
         "resources": {
           "$ref": "#/$defs/resources",
           "description": "Resource limits and requests"
@@ -974,6 +998,14 @@
             }
           },
           "additionalProperties": false
+        },
+        "affinity": {
+          "$ref": "#/$defs/affinity",
+          "description": "Kubernetes affinity configuration"
+        },
+        "tolerations": {
+          "$ref": "#/$defs/tolerations",
+          "description": "Kubernetes tolerations configuration"
         },
         "resources": {
           "$ref": "#/$defs/resources",
@@ -1067,6 +1099,14 @@
           },
           "additionalProperties": false
         },
+        "affinity": {
+          "$ref": "#/$defs/affinity",
+          "description": "Kubernetes affinity configuration"
+        },
+        "tolerations": {
+          "$ref": "#/$defs/tolerations",
+          "description": "Kubernetes tolerations configuration"
+        },
         "resources": {
           "$ref": "#/$defs/resources",
           "description": "Resource limits and requests"
@@ -1140,6 +1180,14 @@
             }
           },
           "additionalProperties": false
+        },
+        "affinity": {
+          "$ref": "#/$defs/affinity",
+          "description": "Kubernetes affinity configuration"
+        },
+        "tolerations": {
+          "$ref": "#/$defs/tolerations",
+          "description": "Kubernetes tolerations configuration"
         },
         "resources": {
           "$ref": "#/$defs/resources",
@@ -1254,6 +1302,14 @@
           },
           "additionalProperties": false
         },
+        "affinity": {
+          "$ref": "#/$defs/affinity",
+          "description": "Kubernetes affinity configuration"
+        },
+        "tolerations": {
+          "$ref": "#/$defs/tolerations",
+          "description": "Kubernetes tolerations configuration"
+        },
         "resources": {
           "$ref": "#/$defs/resources",
           "description": "Resource limits and requests"
@@ -1367,7 +1423,18 @@
         }
       },
       "additionalProperties": false
-    }
-  },
+    },
+    "affinity": {
+      "type": "object",
+      "description": "Kubernetes affinity configuration"
+      },
+    "tolerations": {
+      "type": "array",
+      "description": "Kubernetes tolerations configuration",
+      "items": {
+        "type": "object"
+        }
+      }
+    },
   "additionalProperties": false
 }
