@@ -58,8 +58,8 @@ spec:
             - name: PGADMIN_DEFAULT_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: postgres-secret
-                  key: POSTGRES_PASSWORD
+                  name: {{ include "mcp-stack.postgresSecretName" . | trim | quote }}
+                  key: {{ include "mcp-stack.postgresSecretPasswordKey" . | trim }}
             - name: PGADMIN_LISTEN_PORT
               value: "{{ .Values.pgadmin.service.port }}"
 

@@ -37,6 +37,24 @@ postgres-secret
 {{- end }}
 {{- end }}
 
+{{- define "mcp-stack.postgresSecretUserKey" -}}
+{{- if .Values.mcpContextForge.env.postgres.userKey }}
+{{- .Values.mcpContextForge.env.postgres.userKey }}
+{{- else }}
+POSTGRES_USER
+{{- end }}
+{{- end }}
+
+{{- define "mcp-stack.postgresSecretPasswordKey" -}}
+{{- if .Values.mcpContextForge.env.postgres.passwordKey }}
+{{- .Values.mcpContextForge.env.postgres.passwordKey }}
+{{- else }}
+POSTGRES_PASSWORD
+{{- end }}
+{{- end }}
+
+
+
 {{- /* --------------------------------------------------------------------
      Helper: helpers.renderProbe
      Renders a readiness or liveness probe from a shorthand values block.

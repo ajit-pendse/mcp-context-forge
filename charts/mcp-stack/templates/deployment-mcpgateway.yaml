@@ -52,8 +52,13 @@ spec:
           ################################################################
           env:
             # ---------- POSTGRES ----------
+            {{ if .Values.mcpContextForge.env.postgres.host }}
+            - name: POSTGRES_HOST
+              value: {{ .Values.mcpContextForge.env.postgres.host }}
+            {{ else }}
             - name: POSTGRES_HOST
               value: {{ printf "%s-postgres" (include "mcp-stack.fullname" .) }}
+            {{- end }}
             - name: POSTGRES_PORT
               value: "{{ .Values.mcpContextForge.env.postgres.port }}"
             - name: POSTGRES_DB
@@ -62,12 +67,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: {{ include "mcp-stack.postgresSecretName" . | trim }}
-                  key: POSTGRES_USER
+                  key: {{ include "mcp-stack.postgresSecretUserKey" . | trim }}
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: {{ include "mcp-stack.postgresSecretName" . | trim }}
-                  key: POSTGRES_PASSWORD
+                  key: {{ include "mcp-stack.postgresSecretPasswordKey" . | trim }}
 
             # ---------- REDIS ----------
             - name: REDIS_HOST
