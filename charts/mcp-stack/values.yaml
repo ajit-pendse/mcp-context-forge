@@ -68,7 +68,8 @@ mcpContextForge:
       timeoutSeconds: 2
       successThreshold: 1
       failureThreshold: 3
-
+  affinity: {}
+  tolerations: []
   # Kubernetes resource requests / limits
   resources:
     limits:
@@ -268,6 +269,9 @@ migration:
     #pullPolicy: IfNotPresent
     pullPolicy: Always                      # always pull the latest image; useful for dev/testing
 
+  affinity: {}
+  tolerations: []
+
   # Resource limits for the migration job
   resources:
     limits:
@@ -312,6 +316,9 @@ postgres:
     user: admin
     password: test123           # CHANGE ME in production!
 
+  affinity: {}
+  tolerations: []
+
   # ─── Resource limits & requests ───
   resources:
     limits:
@@ -355,6 +362,9 @@ redis:
   service:
     type: ClusterIP
     port: 6379
+
+  affinity: {}
+  tolerations: []
 
   # ─── Resource limits & requests ───
   resources:
@@ -404,6 +414,9 @@ pgadmin:
     email: admin@example.com
     password: admin123           # CHANGE ME in production!
 
+  affinity: {}
+  tolerations: []
+
   # ─── Resource limits & requests ───
   resources:
     limits:
@@ -449,6 +462,9 @@ redisCommander:
   service:
     type: ClusterIP
     port: 8081
+
+  affinity: {}
+  tolerations: []
 
   # ─── Resource limits & requests ───
   resources:
@@ -522,6 +538,9 @@ mcpFastTimeServer:
       timeoutSeconds: 2
       successThreshold: 1
       failureThreshold: 3
+
+  affinity: {}
+  tolerations: []
 
   # Tiny Go process: ~10 MB runtime footprint
   resources:
