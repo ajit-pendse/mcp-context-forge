@@ -26,6 +26,14 @@ spec:
       labels:
         app: {{ include "mcp-stack.fullname" . }}-postgres
     spec:
+      {{ if .Values.postgres.affinity }}
+      affinity:
+      {{- toYaml .Values.postgres.affinity | nindent 8 }}
+      {{- end }}
+      {{ if .Values.postgres.tolerations }}
+      tolerations:
+      {{- toYaml .Values.postgres.tolerations | nindent 8 }}
+      {{- end }}
       containers:
         - name: postgres
           image: "{{ .Values.postgres.image.repository }}:{{ .Values.postgres.image.tag }}"

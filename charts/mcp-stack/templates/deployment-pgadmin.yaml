@@ -21,6 +21,14 @@ spec:
         app: pgadmin
         release: {{ .Release.Name }}
     spec:
+      {{ if .Values.pgadmin.affinity }}
+      affinity:
+      {{- toYaml .Values.pgadmin.affinity | nindent 8 }}
+      {{- end }}
+      {{ if .Values.pgadmin.tolerations }}
+      tolerations:
+      {{- toYaml .Values.pgadmin.tolerations | nindent 8 }}
+      {{- end }}
       containers:
         - name: pgadmin
           image: "{{ .Values.pgadmin.image.repository }}:{{ .Values.pgadmin.image.tag }}"

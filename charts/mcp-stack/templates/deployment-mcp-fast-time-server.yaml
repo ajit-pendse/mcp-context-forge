@@ -23,6 +23,14 @@ spec:
       labels:
         app: {{ include "mcp-stack.fullname" . }}-mcp-fast-time-server
     spec:
+      {{ if .Values.mcpFastTimeServer.affinity }}
+      affinity:
+      {{- toYaml .Values.mcpFastTimeServer.affinity | nindent 8 }}
+      {{- end }}
+      {{ if .Values.mcpFastTimeServer.tolerations }}
+      tolerations:
+      {{- toYaml .Values.mcpFastTimeServer.tolerations | nindent 8 }}
+      {{- end }}
       containers:
         - name: mcp-fast-time-server
           image: "{{ .Values.mcpFastTimeServer.image.repository }}:{{ .Values.mcpFastTimeServer.image.tag }}"

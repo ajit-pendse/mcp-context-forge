@@ -28,6 +28,14 @@ spec:
         app: {{ include "mcp-stack.fullname" . }}-mcpgateway
 
     spec:
+      {{ if .Values.mcpContextForge.affinity }}
+      affinity:
+      {{- toYaml .Values.mcpContextForge.affinity | nindent 8 }}
+      {{- end }}
+      {{ if .Values.mcpContextForge.tolerations }}
+      tolerations:
+      {{- toYaml .Values.mcpContextForge.tolerations | nindent 8 }}
+      {{- end }}
       containers:
         - name: mcp-context-forge
           image: "{{ .Values.mcpContextForge.image.repository }}:{{ .Values.mcpContextForge.image.tag }}"

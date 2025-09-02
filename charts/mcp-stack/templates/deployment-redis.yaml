@@ -24,6 +24,14 @@ spec:
       labels:
         app: {{ include "mcp-stack.fullname" . }}-redis
     spec:
+      {{ if .Values.redis.affinity }}
+      affinity:
+      {{- toYaml .Values.redis.affinity | nindent 8 }}
+      {{- end }}
+      {{ if .Values.redis.tolerations }}
+      tolerations:
+      {{- toYaml .Values.redis.tolerations | nindent 8 }}
+      {{- end }}
       containers:
         - name: redis
           image: "{{ .Values.redis.image.repository }}:{{ .Values.redis.image.tag }}"
